@@ -1,0 +1,8 @@
+#!/bin/bash
+clear
+g++ -std=c++11 ./vector/testVector.cpp -o ./vector/testVector.o
+g++ -std=c++11 ./list/testList.cpp -o ./list/testList.o
+valgrind --tool=massif --time-unit=B --massif-out-file=massif-vector50000000.txt ./vector/testVector.o 5000000
+valgrind --tool=massif --time-unit=B --massif-out-file=massif-list50000000.txt ./list/testList.o 5000000
+ms_print massif-vector50000000.txt
+ms_print massif-list50000000.txt
